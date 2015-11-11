@@ -1,7 +1,7 @@
 module UsersHelper
 
   # Returns the Gravatar for the given user.
-  def gravater_for(user, options = { size: 100 })
+  def gravatar_for(user, options = { size: 100 })
     gravater_id = Digest::MD5::hexdigest(user.email.downcase)
     size = options[:size]
     gravater_url = "https://secure.gravatar.com/avatar/#{gravater_id}?s=#{size}"
