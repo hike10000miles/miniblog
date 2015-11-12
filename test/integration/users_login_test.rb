@@ -47,4 +47,12 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_nil cookies['remember_token']
   end
 
+  test "logged in user cannot access the new user path" do
+    log_in_as(@user)
+    get new_user_path
+    assert_redirected_to @user
+    assert_not flash.empty?
+    assert is_logged_in?
+  end
+
 end

@@ -8,7 +8,12 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new
+    if current_user
+      flash[:warning] = "Logged in user can not create new user."
+      redirect_to current_user
+    else
+      @user = User.new
+    end
   end
 
   def show
